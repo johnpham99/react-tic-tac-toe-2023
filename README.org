@@ -219,14 +219,12 @@ There is a draw when the game is on move 9 and there is no winner. We have =Game
 function Board({ xIsNext, squares, onPlay, lastMove }) {
   //...
   const winner = calculateWinner(squares);
-  let status;
+  let status = "Next player: " + (xIsNext ? "X" : "O");
   if (lastMove) {
     status = "Draw!";
   }
   if (winner) {
     status = "Winner: " + winner[0];
-  } else {
-    status = "Next player: " + (xIsNext ? "X" : "O");
   }
   //...
 #+END_SRC
