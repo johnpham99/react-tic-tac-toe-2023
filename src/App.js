@@ -28,17 +28,14 @@ function Board({ xIsNext, squares, onPlay, lastMove }) {
   }
 
   const winner = calculateWinner(squares);
-  let status;
+  let status = "Next player: " + (xIsNext ? "X" : "O")
   if (lastMove) {
     status = "Draw!";
   }
   if (winner) {
     status = "Winner: " + winner[0];
-  } else {
-    status = "Next player: " + (xIsNext ? "X" : "O");
   }
 
-  //CREATE BOARD WITH TWO FOR LOOPS
   let board = [];
   for (let i = 0; i < 3; i++) {
     let row = [];
@@ -88,11 +85,9 @@ export default function Game() {
     setCurrentMove(nextMove);
   }
 
-  //changed to Let because of potential reverse later
   let moves = history.map((squares, move) => {
     let description;
 
-    //DISPLAY FOR CURRENT MOVE ONLY
     if (currentMove === move) {
       return <li key={move}>You are at move #{move}</li>;
     }
